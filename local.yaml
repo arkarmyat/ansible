@@ -15,9 +15,9 @@
         - core
 
   tasks:
-    - name: Include task list in play
+    # - name: SSH setup
+    #   ansible.builtin.import_tasks:
+    #     file: ./tasks/ssh.yaml
+    - name: ZSH setup
       ansible.builtin.import_tasks:
-        file: ./tasks/ssh.yaml
-    - name: Include task list in play
-      ansible.builtin.import_tasks:
-        file: ./tasks/node.yaml
+        file: ./tasks/zsh.yaml
