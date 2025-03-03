@@ -1,46 +1,44 @@
-- name: Install nodejs and npm
+- name: Download and install nvm
+  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
   become: true
-  apt:
-    name: ["nodejs", "npm"]
-  tags:
-    - install
-    - node
 
-- name: npmjs prefix
-  shell: mkdir -p ~/.local/.npm-global
-  tags:
-    - install
-    - node
+- name: Source nvm
+  shell: . "$HOME/.nvm/nvm.sh"
+  become: true
 
-- name: add npmjs to path
-  shell: PATH=~/.local/.npm-global/bin:$PATH
-  tags:
-    - install
-    - node
+- name: Install Node.js v22
+  shell: nvm install 22
+  become: true
 
-- name: npmjs global settings
-  shell: npm config set prefix '~/.local/.npm-global'
-  tags:
-    - install
-    - node
+- name: Verify Node.js version
+  shell: node -v
+  register: node_version
+  become: true
+  changed_when: false
 
-- name: npmjs global settings export path in case I don't have dotfiles installed
-  shell: export PATH=~/.local/.npm-global/bin:$PATH
-  tags:
-    - install
-    - node
-    - npm-path
+- name: Assert Node.js version
+  assert:
+    that: node_version.stdout == "v22.14.0"
+    msg: "Node.js version is not v22.14.0"
 
-- name: Install N
-  npm:
-    name: n
-    global: yes
-  tags:
-    - install
-    - node
+- name: Verify nvm current version
+  shell: nvm current
+  register: nvm_current_version
+  become: true
+  changed_when: false
 
-- name: Install correct version of Node
-  shell: n 22.14.0
-  tags:
-    - install
-    - node
+- name: Assert nvm current version
+  assert:
+    that: nvm_current_version.stdout == "v22.14.0"
+    msg: "nvm current version is not v22.14.0"
+
+- name: Verify npm version
+  shell: npm -v
+  register: npm_version
+  become: true
+  changed_when: false
+
+- name: Assert npm version
+  assert:
+    that: npm_version.stdout == "10.9.2"
+    msg: "npm version is not 10.9.2"
