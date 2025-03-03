@@ -18,4 +18,4 @@
         file: ./tasks/preinstall.yaml
     - name: LocalXpose
       ansible.builtin.import_tasks:
-        file: ./tasks/node.yaml
+        file: ./tasks/localxpose.yaml

@@ -2,9 +2,9 @@
   shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
   become: true
 
-- name: Source nvm
-  shell: . "$HOME/.nvm/nvm.sh"
-  become: true
+# - name: Source nvm
+#   shell: . "$HOME/.nvm/nvm.sh"
+#   become: true
 
 - name: Install Node.js v22
   shell: nvm install 22
