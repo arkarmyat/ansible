@@ -1,8 +1,8 @@
 - hosts: localhost
-  # vars:
-  #   source_key: "./.ssh/id_rsa"
-  #   dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
-  #   personal: "{{ lookup('env', 'HOME') }}/personal"
+  vars:
+    source_key: "./.ssh/id_rsa"
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+    personal: "{{ lookup('env', 'HOME') }}/personal"
   pre_tasks:
     - name: Update Apt
       become: true
@@ -15,13 +15,9 @@
         - core
 
   tasks:
-    # - name: SSH setup
-    #   ansible.builtin.import_tasks:
-    #     file: ./tasks/ssh.yaml
-    - name: Pre tools 
+    - name: SSH setup
+      ansible.builtin.import_tasks:
+        file: ./tasks/ssh.yaml
+    - name: Pre tools
       ansible.builtin.import_tasks:
         file: ./tasks/preinstall.yaml
-
-    - name: ZSH setup
-      ansible.builtin.import_tasks:
-        file: ./tasks/zsh.yaml
