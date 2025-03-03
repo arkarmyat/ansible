@@ -13,8 +13,8 @@
       tags:
         - install
         - core
-  tasks:
-    - include: tasks/ssh.yml
+  import_tasks:
+    - tasks/ssh.yml
     # - include: tasks/git-setup.yml
     # - include: tasks/core-setup.yml
     # - include: tasks/node-setup.yml
