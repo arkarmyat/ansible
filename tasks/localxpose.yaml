@@ -1,5 +1,3 @@
 - name: Install localxpose
   community.general.snap:
     name: localxpose
-    state: present
-    command: localxpose
