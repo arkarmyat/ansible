@@ -1,0 +1,9 @@
+- name: Install vim
+  package:
+    name: vim
+    state: present
+
+- name: Install curl
+  package:
+    name: curl
+    state: present

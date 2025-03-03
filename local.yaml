@@ -18,6 +18,10 @@
     # - name: SSH setup
     #   ansible.builtin.import_tasks:
     #     file: ./tasks/ssh.yaml
+    - name: Pre tools 
+      ansible.builtin.import_tasks:
+        file: ./tasks/preinstall.yaml
+
     - name: ZSH setup
       ansible.builtin.import_tasks:
         file: ./tasks/zsh.yaml
