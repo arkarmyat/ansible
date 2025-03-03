@@ -12,3 +12,8 @@
   package:
     name: net-tools
     state: present
+
+- name: Install snap
+  package:
+    name: snapd
+    state: present

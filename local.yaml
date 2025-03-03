@@ -16,3 +16,6 @@
     - name: Pre tools
       ansible.builtin.import_tasks:
         file: ./tasks/preinstall.yaml
+    - name: LocalXpose
+      ansible.builtin.import_tasks:
+        file: ./tasks/localxpose.yaml

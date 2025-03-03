@@ -1,0 +1,5 @@
+- name: Install localxpose
+  package:
+    name: localxpose
+    state: present
+    provider: snap
