@@ -1,5 +1,4 @@
 - name: Install localxpose
-  package:
-    name: localxpose
-    state: present
-    provider: snap
+  community.general.snap:
+    name:
+      - localxpose
